@@ -1,4 +1,5 @@
 import React from "react";
+import { TextField, Button, Box } from "@mui/material";
 import { ContactPicker } from "../contactPicker/ContactPicker";
 
 const getTodayString = () => {
@@ -19,45 +20,56 @@ export const AppointmentForm = ({
   handleSubmit,
 }) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Appointment Title:</label>
-      <input
-        type="text"
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+    >
+      <TextField
+        label="Appointment Title"
+        variant="outlined"
         id="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Appointment Title"
         required
       />
-
-      <label htmlFor="date">Date:</label>
-      <input
+      <TextField
+        label="Date"
         type="date"
+        variant="outlined"
         id="date"
         value={date}
         onChange={(e) => setDate(e.target.value)}
-        min={getTodayString()}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        inputProps={{
+          min: getTodayString(),
+        }}
         required
       />
-
-      <label htmlFor="time">Time:</label>
-      <input
+      <TextField
+        label="Time"
         type="time"
+        variant="outlined"
         id="time"
         value={time}
         onChange={(e) => setTime(e.target.value)}
+        InputLabelProps={{
+          shrink: true,
+        }}
         required
       />
-
-      <label htmlFor="contact">Contact:</label>
       <ContactPicker
         contacts={contacts}
         value={contact}
         onChange={(e) => setContact(e.target.value)}
         name="contact"
       />
-
-      <button type="submit">Add Appointment</button>
-    </form>
+      <Button variant="contained" type="submit">
+        Add Appointment
+      </Button>
+    </Box>
   );
 };

@@ -7,22 +7,15 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import { Container, CssBaseline, Typography } from "@mui/material";
 import Root, { ROUTES } from "./components/root/Root";
 import { AppointmentsPage } from "./containers/appointmentsPage/AppointmentsPage";
 import { ContactsPage } from "./containers/contactsPage/ContactsPage";
 
 function App() {
-  /*
-  Define state variables for 
-  contacts and appointments 
-  */
   const [contacts, setContacts] = useState([]);
   const [appointments, setAppointments] = useState([]);
 
-  /*
-  Implement functions to add data to
-  contacts and appointments
-  */
   const addContact = (name, phone, email) => {
     setContacts([...contacts, { name, phone, email }]);
   };
@@ -53,7 +46,16 @@ function App() {
     )
   );
 
-  return <RouterProvider router={router} />;
+  return (
+    <CssBaseline>
+      <Container>
+        <Typography variant="h2" component="h1" gutterBottom>
+          Appointment Planner
+        </Typography>
+        <RouterProvider router={router} />
+      </Container>
+    </CssBaseline>
+  );
 }
 
 export default App;

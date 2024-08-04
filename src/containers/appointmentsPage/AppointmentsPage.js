@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { AppointmentForm } from "../../components/appointmentForm/AppointmentForm";
 import { TileList } from "../../components/tileList/TileList";
+import { Typography, Container, Box } from "@mui/material";
 
 export const AppointmentsPage = ({
   appointments,
   contacts,
   addAppointment,
 }) => {
-  // Define state variables for appointment info
   const [title, setTitle] = useState("");
   const [contact, setContact] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     addAppointment(title, contact, date, time);
@@ -24,9 +23,11 @@ export const AppointmentsPage = ({
   };
 
   return (
-    <div>
-      <section>
-        <h2>Add Appointment</h2>
+    <Container>
+      <Box sx={{ marginTop: 4 }}>
+        <Typography variant="h4" component="h2" gutterBottom>
+          Add Appointment
+        </Typography>
         <AppointmentForm
           contacts={contacts}
           title={title}
@@ -39,12 +40,13 @@ export const AppointmentsPage = ({
           setTime={setTime}
           handleSubmit={handleSubmit}
         />
-      </section>
-      <hr />
-      <section>
-        <h2>Appointments</h2>
+      </Box>
+      <Box sx={{ marginTop: 4 }}>
+        <Typography variant="h4" component="h2" gutterBottom>
+          Appointments
+        </Typography>
         <TileList tiles={appointments} />
-      </section>
-    </div>
+      </Box>
+    </Container>
   );
 };

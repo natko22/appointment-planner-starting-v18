@@ -1,14 +1,24 @@
 import React from "react";
+import { TextField, MenuItem } from "@mui/material";
 
 export const ContactPicker = ({ contacts, onChange, value, name }) => {
   return (
-    <select name={name} value={value} onChange={onChange} required>
-      <option value="">No Contact Selected</option>
+    <TextField
+      select
+      label="Contact"
+      name={name}
+      value={value}
+      onChange={onChange}
+      variant="outlined"
+      fullWidth
+      required
+    >
+      <MenuItem value="">No Contact Selected</MenuItem>
       {contacts.map((contact, index) => (
-        <option key={index} value={contact.name}>
+        <MenuItem key={index} value={contact.name}>
           {contact.name}
-        </option>
+        </MenuItem>
       ))}
-    </select>
+    </TextField>
   );
 };

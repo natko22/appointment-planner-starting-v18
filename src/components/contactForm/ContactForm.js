@@ -1,4 +1,5 @@
 import React from "react";
+import { TextField, Button, Box } from "@mui/material";
 
 export const ContactForm = ({
   name,
@@ -10,29 +11,35 @@ export const ContactForm = ({
   handleSubmit,
 }) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name:</label>
-      <input
-        type="text"
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+    >
+      <TextField
+        label="Name"
+        variant="outlined"
         id="name"
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Name"
         required
       />
-
-      <label htmlFor="phone">Phone:</label>
-      <input
+      <TextField
+        label="Phone"
+        variant="outlined"
         type="tel"
         id="phone"
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
         placeholder="Phone"
-        pattern="^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$"
+        inputProps={{
+          pattern: "^((?+?[0-9]*)?)?[0-9_- ()]*$",
+        }}
       />
-
-      <label htmlFor="email">Email:</label>
-      <input
+      <TextField
+        label="Email"
+        variant="outlined"
         type="email"
         id="email"
         value={email}
@@ -40,8 +47,9 @@ export const ContactForm = ({
         placeholder="Email"
         required
       />
-
-      <button type="submit">Add Contact</button>
-    </form>
+      <Button variant="contained" type="submit">
+        Add Contact
+      </Button>
+    </Box>
   );
 };

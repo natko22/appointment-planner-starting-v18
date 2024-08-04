@@ -1,14 +1,17 @@
 import React from "react";
+import { Box, Typography, Paper } from "@mui/material";
 
 export const Tile = ({ name, description }) => {
   return (
-    <div className="tile-container">
-      <p className="tile-title">{name}</p>
+    <Paper elevation={3} sx={{ padding: 2, marginBottom: 2 }}>
+      <Typography variant="h6" component="div" sx={{ marginBottom: 1 }}>
+        {name}
+      </Typography>
       {Object.values(description).map((value, index) => (
-        <p key={index} className="tile">
+        <Typography key={index} variant="body2" component="p">
           {value}
-        </p>
+        </Typography>
       ))}
-    </div>
+    </Paper>
   );
 };
