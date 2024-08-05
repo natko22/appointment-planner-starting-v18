@@ -7,7 +7,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { Container, CssBaseline, Typography } from "@mui/material";
+import { Container, CssBaseline, Typography, Box } from "@mui/material";
 import Root, { ROUTES } from "./components/root/Root";
 import { AppointmentsPage } from "./containers/appointmentsPage/AppointmentsPage";
 import { ContactsPage } from "./containers/contactsPage/ContactsPage";
@@ -49,9 +49,11 @@ function App() {
   return (
     <CssBaseline>
       <Container>
-        <Typography variant="h2" component="h1" gutterBottom>
-          Appointment Planner
-        </Typography>
+        <Box sx={{ display: "flex", justifyContent: "center", marginTop: 4 }}>
+          <Typography variant="h2" component="h1" gutterBottom>
+            Appointment Planner
+          </Typography>
+        </Box>
         <RouterProvider router={router} />
       </Container>
     </CssBaseline>
